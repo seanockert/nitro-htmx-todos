@@ -1,6 +1,8 @@
 //https://nitro.unjs.io/config
 export default defineNitroConfig({
   srcDir: 'src',
+  compressPublicAssets: { gzip: true, brotli: false },
+  preset: 'cloudflare-pages',
   experimental: {
     database: true
   },
