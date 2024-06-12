@@ -6,6 +6,9 @@ export default defineNitroConfig({
   experimental: {
     database: true
   },
+  devServer: {
+    watch: ['src/routes', 'src/components'],
+  },
   publicAssets: [
     {
       baseURL: 'images',

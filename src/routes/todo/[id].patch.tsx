@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
     } else {
       await db.sql`UPDATE todos SET done = ${body.done === 'on' ? 1 : 0}, updated = datetime() WHERE id = ${id}`;
     }
-    return { message: 'Todo item updated' };
+    return { message: `Todo item updated. Value: ${body.done ?? body.value}` };
   } catch (err) {
     throw createError({
       status: 500,

@@ -1,16 +1,17 @@
 import { h } from 'nano-jsx';
 
 export interface TodoProps {
-  done: number;
   created: string;
+  done: number;
   id: string;
+  todosCount: number;
   updated: string;
   value: string;
 }
 
-export const Todo = ({ id, value, done, updated }: TodoProps) => {
+export const Todo = ({ id, value, done, created }: TodoProps) => {
   return (
-    <li className="inline fade-out" data-id={id} data-updated={updated} id={`todo-${id}`}>
+    <li className="inline fade-out" data-id={id} data-created={created} id={`todo-${id}`}>
       <label htmlFor={`done-${id}`} hidden>
         Mark as done
       </label>
@@ -20,7 +21,7 @@ export const Todo = ({ id, value, done, updated }: TodoProps) => {
         name="done"
         hx-patch={`/todo/${id}`}
         checked={done === 1 ? true : undefined}
-        value={id}
+        value={done === 1 ? 'on' : undefined}
       />
       <label htmlFor={`value-${id}`} hidden>
         Value
@@ -30,7 +31,7 @@ export const Todo = ({ id, value, done, updated }: TodoProps) => {
       <button
         type="button"
         hx-delete={`/todo/${id}`}
-        hx-swap="outerHTML swap:300ms"
+        hx-swap="outerHTML swap:150ms"
         hx-target={`#todo-${id}`}
         hx-confirm="Delete?">
         <svg className="icon" viewBox="0 0 24 24">

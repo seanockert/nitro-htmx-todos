@@ -27,7 +27,7 @@ export default defineEventHandler(async (event) => {
 
         <button
           type="button"
-          hx-delete={`/todo/${todo.id}`}
+          hx-delete={`/todo/${todo.id}?redirect=true`}
           hx-swap="outerHTML swap:0.15s"
           hx-target={`#todo-${todo.id}`}
           hx-confirm="Delete?">
